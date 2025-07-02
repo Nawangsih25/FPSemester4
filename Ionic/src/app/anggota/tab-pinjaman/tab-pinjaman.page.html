@@ -1,0 +1,158 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/anggota/beranda" icon="chevron-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Pinjaman</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-card class="total-pinjaman">
+      <ion-card-header>
+        <ion-card-title>Dana yang akan diterima</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>{{ formatCurrency(rangeValue) }}</p>
+        <ion-range 
+          [(ngModel)]="rangeValue"
+          [min]="minValue" 
+          [max]="maxValue"
+          [step]="stepValue"
+          color="success"
+          (ionChange)="updateValue()">
+        </ion-range>
+
+        <div class="minmax-label">
+          <ion-label>{{ formatCurrency(minValue) }}</ion-label>
+          <ion-label>{{ formatCurrency(maxValue) }}</ion-label>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="tenor">
+      <ion-card-header>
+        <ion-card-title>Tenor Pinjaman</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>Pilih tenor yang akan di bayarkan pada setiap harinya.</p>
+        <div class="pilih-tenor">
+          <ion-button 
+            class="button-tenor"
+            [class.selected]="tenorDipilih === 0"
+            (click)="pilihTenor(0)">
+            <img src="assets/icon/fuck.png" class="bg-button">
+            <div class="isi-button">
+              <div class="nominal">{{ formatCurrency(tenorOptions[0].nominal) }}</div>
+              <div class="kali-bayar">{{ tenorOptions[0].label }}</div>
+            </div>
+          </ion-button>
+
+          <ion-button 
+            class="button-tenor"
+            [class.selected]="tenorDipilih === 1"
+            (click)="pilihTenor(1)">
+            <img src="assets/icon/fuck.png" class="bg-button">
+            <div class="isi-button">
+              <div class="nominal">{{ formatCurrency(tenorOptions[1].nominal) }}</div>
+              <div class="kali-bayar">{{ tenorOptions[1].label }}</div>
+            </div>
+          </ion-button>
+        </div>
+        <p>Bunga 5%</p>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Pilih Tujuan -->
+    <ion-card class="bank-section">
+      <ion-list>
+        <ion-item>
+          <ion-select interface="action-sheet" label="Pilih Tujuan Pinjaman" label-placement="floating" fill="outline" [(ngModel)]="selectedTujuanPinjaman">
+            <ion-select-option value="bni">Beli Rumah</ion-select-option>
+            <ion-select-option value="bjb">Renovasi Rumah</ion-select-option>
+            <ion-select-option value="mandiri">Bangun Usaha</ion-select-option>
+            <ion-select-option value="dana">Beli Sawah</ion-select-option>
+            <ion-select-option value="gopay">Adu Gengsi</ion-select-option>
+            <ion-select-option value="ovo">Butuh Perhatian Kolektor</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <!-- Pilihan Bank -->
+    <ion-card class="bank-section">
+      <ion-list>
+        <ion-item>
+          <ion-select interface="action-sheet" label="Pilih Bank Tujuan" label-placement="floating" fill="outline" [(ngModel)]="selectedBankTujuan">
+            <ion-select-option value="BNI">BNI</ion-select-option>
+            <ion-select-option value="BJB">BJB</ion-select-option>
+            <ion-select-option value="Mandiri">Mandiri</ion-select-option>
+            <ion-select-option value="Dana">Dana</ion-select-option>
+            <ion-select-option value="Gopay">Gopay</ion-select-option>
+            <ion-select-option value="Ovo">Ovo</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+    
+    <!-- Detail Pinjaman -->
+    <ion-card class="detail-pinjaman">
+      <ion-card-header>
+        <ion-card-title>Detail Pinjaman</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="detail-item">
+          <span class="label">Dana yang diajukan</span>
+          <span class="value">{{ formatCurrency(rangeValue) }}</span>
+        </div>
+        
+        <div class="detail-item">
+          <span class="label">Besar Bunga (5%)</span>
+          <span class="value">{{ formatCurrency(biayaBunga) }}</span>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="detail-item">
+          <span class="label">Subtotal</span>
+          <span class="value">{{ formatCurrency(subtotal) }}</span>
+        </div>
+        
+        <div class="detail-item dana-terima">
+          <span class="label">Dana yang akan kamu terima</span>
+          <span class="value">{{ formatCurrency(rangeValue) }}</span>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="detail-item highlight">
+          <span class="label">Cicilan {{ getCicilanLabel() }}</span>
+          <span class="value">{{ formatCurrency(subtotal) }}</span>
+        </div>
+        
+        <div class="detail-item highlight">
+          <span class="label">Bunga 5%</span>
+          <span class="value">{{ formatCurrency(biayaPerhari) }}/Hari</span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="bottom-button-container">
+      <div slot="start" class="payment-info">
+        <div *ngIf="tenorDipilih !== null" class="amount">{{ formatCurrency(biayaPerhari) }}/Hari</div>
+      </div>
+      <div *ngIf="tenorDipilih === null" class="amount">
+        Pilih Tenor Terlebih Dahulu
+      </div>
+      <ion-button expand="block" class="action-button" (click)="goToHasilPinjaman()" [disabled]="tenorDipilih === null">
+        Ambil Pinjaman
+      </ion-button>
+    </div>
+
+  </div>
+
+</ion-content>

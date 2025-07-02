@@ -1,0 +1,107 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/kolektor/beranda-kolektor" icon="chevron-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Daftar Anggota</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-list>
+      <ion-card [button]="true" class="card-anggota">
+        <ion-card-header>
+          <ion-icon name="person-circle" slot="start" class="avatar-icon"></ion-icon>
+          <ion-card-title>
+            Abdul Hafidz
+          </ion-card-title>
+          <ion-card-subtitle>
+            0811 3547 9712
+          </ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="hutang">
+            <span class="text">Hutang</span>
+            <span class="nominal">Rp200.000</span>
+          </div>
+          <div class="status">
+            <span class="text">Status</span>
+            <span class="nominal lunas">Lunas</span>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card [button]="true" class="card-anggota">
+        <ion-card-header>
+          <ion-icon name="person-circle" slot="start" class="avatar-icon"></ion-icon>
+          <ion-card-title>
+            Abdul Nelsen
+          </ion-card-title>
+          <ion-card-subtitle>
+            0832 3657 9853
+          </ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="hutang">
+            <span class="text">Hutang</span>
+            <span class="nominal">Rp2.000.000</span>
+          </div>
+          <div class="status">
+            <span class="text">Status</span>
+            <span class="nominal belum-bayar">Belum Bayar</span>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card [button]="true" class="card-anggota">
+        <ion-card-header>
+          <ion-icon name="person-circle" slot="start" class="avatar-icon"></ion-icon>
+          <ion-card-title>
+            Fajar Aja
+          </ion-card-title>
+          <ion-card-subtitle>
+            0812 4556 9123
+          </ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="hutang">
+            <span class="text">Hutang</span>
+            <span class="nominal">Rp5.000.000</span>
+          </div>
+          <div class="status">
+            <span class="text">Status</span>
+            <span class="nominal belum-bayar">Belum Bayar</span>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card [button]="true" class="card-anggota">
+        <ion-card-header>
+          <ion-icon name="person-circle" slot="start" class="avatar-icon"></ion-icon>
+          <ion-card-title>
+            Nanang
+          </ion-card-title>
+          <ion-card-subtitle>
+            0831 6216 5723
+          </ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="hutang">
+            <span class="text">Hutang</span>
+            <span class="nominal">Rp4.000.000</span>
+          </div>
+          <div class="status">
+            <span class="text">Status</span>
+            <span class="nominal nunggak">Menunggak</span>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+
+  </div>
+</ion-content>

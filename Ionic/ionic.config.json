@@ -1,0 +1,7 @@
+{
+  "name": "CobaSenn",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

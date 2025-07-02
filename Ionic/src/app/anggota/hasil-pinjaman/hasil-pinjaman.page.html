@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Hasil Pinjaman</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <!-- Bagian Pinjaman Diterima -->
+    <div class="pinjaman-diterima">
+      <img src="assets/icon/sukses.png" class="icon-sukses">
+      <p>Pinjaman Sebesar</p>
+      <div class="besar-nominal">{{ transferData.danaDiajukan }}</div>
+    </div>
+
+    <!-- Detail Transaksi -->
+    <ion-card>
+      <div class="detail-transaksi">
+        <h2>Detail Pinjaman</h2>
+        
+        <div class="detail-item">
+          <span>No. Transaksi</span>
+          <span class="value">000101062025</span>
+        </div>
+        
+        <div class="detail-item">
+          <span>Waktu Transaksi</span>
+          <span class="value">{{ transferData.tanggal }}</span>
+        </div>
+      </div>
+    
+      <div class="divider"></div>
+    
+      <!-- Rincian Pembayaran -->
+      <div class="rincian-pembayaran">
+        <div class="detail-item">
+          <span>Dana yang diterima</span>
+          <span class="value">{{ transferData.danaDiajukan }}</span>
+        </div>
+        
+        <div class="detail-item">
+          <span>Subtotal</span>
+          <span class="value">{{ transferData.subtotal }}</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+    
+      <!-- Metode Pembayaran -->
+      <div class="metode-pembayaran">
+        <div class="detail-item">
+          <span><strong>Dana dikirim ke</strong></span>
+          <span class="value">{{ transferData.selectedBankTujuan }}</span>
+        </div>
+      </div>
+    </ion-card>
+  
+    <!-- Tombol Aksi -->
+    <div class="action-buttons">
+      <ion-button expand="block" fill="clear" class="bagikan-button">Bagikan</ion-button>
+      <ion-button expand="block" class="success-button" (click)="kembaliKeHome()">Selesai</ion-button>
+    </div>
+  </div>
+</ion-content>

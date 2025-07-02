@@ -1,0 +1,65 @@
+.custom-header {
+  background: #56D4AA;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding-bottom: 20px;
+  text-align: center;
+  height: 152px;
+}
+
+ion-toolbar {
+  --background: transparent;
+  --color: #000000;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.profile-icon {
+  font-size: 35px;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.profile-info .nama {
+  font-weight: bold;
+  color: white;
+  font-size: 12px;
+}
+
+.profile-info .hp {
+  color: white;
+  font-size: 12px;
+  margin-top: 2px;
+  font-weight: bold;
+}
+
+.profile-info .role {
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+.container {
+    padding: 10px;
+}
+
+.card-profile {
+    background: #F9F9F9;
+
+    .keluar {
+        text-align: center;
+    }
+
+    .button-keluar {
+        color: #EF1212;
+        text-transform: none;
+        font-size: 14px;
+        font-weight: 400;
+    }
+}

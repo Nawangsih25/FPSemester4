@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Hasil Pembayaran</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <!-- Bagian Pembayaran Diterima -->
+    <div class="terima-pembayaran">
+      <img src="assets/icon/sukses.png" class="icon-sukses">
+      <p>Pembayaran Diterima</p>
+      <div class="besar-nominal">{{ paymentData?.totalPaid }}</div>
+    </div>
+  
+    <!-- Detail Transaksi -->
+    <ion-card>
+      <div class="detail-transaksi">
+        <h2>Detail Pembayaran Angsuran</h2>
+        
+        <div class="detail-item">
+          <span>No. Transaksi</span>
+          <span class="value">000101062025</span>
+        </div>
+        
+        <div class="detail-item">
+          <span>Waktu Transaksi</span>
+          <span class="value">{{ paymentData?.paymentDate }} {{ paymentData?.paymentTime }}</span>
+        </div>
+      </div>
+    
+      <div class="divider"></div>
+    
+      <!-- Rincian Pembayaran -->
+      <div class="rincian-pembayaran">
+        <div class="detail-item">
+          <span>Dana yang dibayarkan</span>
+          <span class="value">{{ paymentData?.totalPaid }}</span>
+        </div>
+        
+        <div class="detail-item">
+          <span>Subtotal</span>
+          <span class="value">{{ paymentData?.totalPaid }}</span>
+        </div>
+      </div>
+    
+      <div class="divider"></div>
+    
+      <!-- Total sisa yang Harus Dibayar -->
+      <div class="sisa-bayar">
+        <div class="detail-item highlight">
+          <span><strong>Dana sisa yang harus dibayar</strong></span>
+          <span class="value">{{ paymentData?.unpaidBills }}</span>
+        </div>
+      </div>
+    
+      <div class="divider"></div>
+    
+      <!-- Metode Pembayaran -->
+      <div class="metode-pembayaran">
+        <div class="detail-item">
+          <span><strong>Pembayaran Melalui</strong></span>
+          <span class="value">{{ getPaymentMethodName(paymentData?.paymentMethod) }}</span>
+        </div>
+      </div>
+    </ion-card>
+  
+    <!-- Tombol Aksi -->
+    <div class="action-buttons">
+      <ion-button expand="block" fill="clear" class="bagikan-button">Bagikan</ion-button>
+      <ion-button expand="block" class="success-button" (click)="gotoHomePage()">Selesai</ion-button>
+    </div>
+  </div>
+</ion-content>

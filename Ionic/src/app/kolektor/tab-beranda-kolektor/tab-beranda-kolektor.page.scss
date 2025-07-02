@@ -1,0 +1,242 @@
+.welcome-container {
+  display: flex;
+  align-items: center; // Sejajar vertikal
+  justify-content: space-between; // Memisahkan kiri dan kanan
+  padding: 5px;
+  width: 100%; // Pastikan mengambil lebar penuh
+}
+
+.welcome-left {
+  display: flex;
+  align-items: center; // Sejajar vertikal
+  gap: 15px; // Jarak antara ikon dan teks
+}
+
+.welcome-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.welcome-text {
+  font-size: 16px;
+}
+
+.notif-container {
+  display: flex;
+  align-items: center; // Sejajar vertikal
+  gap: 5px; // Jarak antara ikon dan badge
+}
+
+.icon-notif {
+  width: 24px;
+  height: 24px;
+}
+
+.container {
+    padding: 10px;
+}
+
+.info-nominal {
+  background: #F9F9F9;
+  border-radius: 20px;
+  height: 87px;
+  padding: 16px 0; // Tambahkan padding vertikal
+
+  .payment-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative; // Tambahkan ini
+  }
+
+  .payment-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+    flex: 1; // Membagi ruang secara merata
+  }
+
+  .divider {
+    height: 87px; // Sesuaikan tinggi dengan kebutuhan
+    border-left: 1px solid #A4A4A4;
+    margin: -16px 0; // Negative margin untuk kompensasi padding
+  }
+
+  .text {
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 4px;
+  }
+
+  .nominal {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+  }
+}
+
+.card-container {
+  display: flex;           /* Mengaktifkan Flexbox */
+  gap: 16px;               /* Jarak antara button dan card */
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 25px;
+  height: 87px;
+  align-items: stretch;    /* Memastikan tinggi sama */
+
+  .anggota {
+    --background: #F9F9F9;
+    flex: 1;                 /* Card mengambil ruang sama */
+    margin: 0;               /* Hapus margin default */
+    width: 100%;             /* Lebar penuh */
+    border-radius: 20px;
+  }
+
+  ion-card-title {
+    color: #000000;
+    font-size: 12px;
+    width: 85px;
+    height: 18px;
+  }
+
+  p {
+    color: #000000;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .button-laporan {
+    --background: #56D4AA;
+    color: #FCFCFC;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: none;
+    flex: 1;                 /* Button mengambil ruang sama */
+    margin: 0;               /* Hapus margin default */
+    height: auto;            /* Tinggi menyesuaikan card */
+    --padding-top: 12px;     /* Padding vertikal button */
+    --padding-bottom: 12px;
+    --border-radius: 20px;
+  }
+}
+
+.button-bayar {
+  margin-top: 25px;
+  --background: #56D4AA;
+  --color: #FCFCFC;
+  --border-radius: 20px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .button-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+
+    .top-text {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .bottom-text {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+}
+
+.riwayat-transaksi {
+  margin-top: 20px;
+  border-radius: 20px;
+  background: #F9F9F9;
+
+  ion-card-header {
+    height: 40px;
+    padding-top: 0px;
+    
+    ion-card-title {
+      height: 21px;
+      --padding-top: 0px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    ion-button {
+      color: #000000;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: none;
+      width: 100%;
+      justify-content: space-between;
+      --padding-start: 0;
+      --padding-end: 0;
+
+      ion-icon {
+        margin-left: auto;
+      }
+    }
+  }
+
+  .divider {
+    height: 1px;
+    background-color: #A4A4A4;
+  }
+
+  ion-list {
+    background: #F9F9F9;
+    padding-top: 0;
+  }
+  
+  ion-item {
+    --padding-start: 8px;
+    --inner-padding-end: 8px;
+    --min-height: 72px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    --background: #f9f9f9;
+
+    ion-avatar {
+      margin-top: -8px;
+      text-align: center;
+    }
+
+    ion-label {
+      h3 {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 4px;
+        color: #000000;
+      }
+
+      h6 {
+        font-size: 10px;
+        font-weight: 500;
+        color: #000000;
+        margin-bottom: 0;
+      }
+      
+      p {
+        color: #A4A4A4;
+        font-size: 8px;
+        font-weight: 500;
+        margin-top: 0;
+      }
+    }
+
+    ion-note {
+      ion-button {
+        font-size: 12px;
+        font-weight: 500;
+        text-decoration: none;
+        color: #56D4AA;
+        text-transform: none;
+      }
+    }
+  }
+}

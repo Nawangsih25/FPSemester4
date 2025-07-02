@@ -1,0 +1,145 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <div class="welcome-container">
+        <div class="welcome-left">
+          <ion-icon name="person-circle-outline" class="welcome-icon"></ion-icon>
+          <div class="welcome-text">
+            <p><strong>Selamat Datang <br>Nama Pengguna</strong></p>
+          </div>
+        </div>
+        <div class="notif-container" (click)="gotoNotifikasi()">
+          <ion-icon name="notifications-outline" class="icon-notif"></ion-icon>
+          <ion-badge *ngIf="unreadCount > 0" color="danger">{{ unreadCount }}</ion-badge>
+        </div>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-card class="info-nominal">
+      <div class="payment-container">
+        <div class="payment-item">
+          <span class="text">Total Tagihan Bulan Ini</span>
+          <span class="nominal">Rp5.000.000</span>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="payment-item">
+          <span class="text">Angsuran telah dibayar</span>
+          <span class="nominal">Rp3.500.000</span>
+        </div>
+      </div>
+    </ion-card>
+
+    <div class="card-container">
+      <ion-card class="anggota">
+        <ion-icon slot="start" name="person"></ion-icon>
+        <ion-card-header>
+          <ion-card-title>Anggota</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>15</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-button class="button-laporan">Laporan</ion-button>
+    </div>
+
+    <ion-button class="button-bayar" (click)="gotoBayarAngsuran()">
+      <div class="button-content">
+        <span class="top-text">Bayar</span>
+        <span class="bottom-text">Angsuran</span>
+      </div>
+    </ion-button>
+
+    <ion-card class="riwayat-transaksi">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-button fill="clear" (click)="gotoRiwayat()">
+            Riwayat Transaksi
+            <ion-icon slot="end" name="chevron-forward"></ion-icon>
+          </ion-button>
+        </ion-card-title>
+      </ion-card-header>
+
+      <div class="divider"></div>
+      
+      <ion-card-content>
+        <!-- Daftar Transaksi -->
+        <ion-list lines="none">
+          <!-- Item Transaksi 1 -->
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-icon name="person-circle" style="width: 50px; height: 50px;"></ion-icon>
+            </ion-avatar>
+            
+            <ion-label>
+              <h3>Abdul Hafidz</h3>
+              <h6>Angsuran Ke-1</h6>
+              <p>01 Juni 2025, 07:00</p>
+            </ion-label>
+            
+            <ion-note slot="end">
+              <ion-button fill="clear" (click)="gotoRincian()">Lihat Rincian</ion-button>
+            </ion-note>
+          </ion-item>
+
+          <!-- Item Transaksi 2 -->
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-icon name="person-circle" style="width: 50px; height: 50px;"></ion-icon>
+            </ion-avatar>
+            
+            <ion-label>
+              <h3>Abdul Nelsen</h3>
+              <h6>Angsuran Ke-2</h6>
+              <p>01 Juni 2025, 07:00</p>
+            </ion-label>
+            
+            <ion-note slot="end">
+              <ion-button fill="clear">Lihat Rincian</ion-button>
+            </ion-note>
+          </ion-item>
+
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-icon name="person-circle" style="width: 50px; height: 50px;"></ion-icon>
+            </ion-avatar>
+            
+            <ion-label>
+              <h3>Fajar</h3>
+              <h6>Angsuran Ke-3</h6>
+              <p>01 Juni 2025, 07:00</p>
+            </ion-label>
+            
+            <ion-note slot="end">
+              <ion-button fill="clear">Lihat Rincian</ion-button>
+            </ion-note>
+          </ion-item>
+
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-icon name="person-circle" style="width: 50px; height: 50px;"></ion-icon>
+            </ion-avatar>
+            
+            <ion-label>
+              <h3>Nanang</h3>
+              <h6>Angsuran Ke-4</h6>
+              <p>01 Juni 2025, 07:00</p>
+            </ion-label>
+            
+            <ion-note slot="end">
+              <ion-button fill="clear">Lihat Rincian</ion-button>
+            </ion-note>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+</ion-content>

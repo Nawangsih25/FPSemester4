@@ -1,0 +1,126 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <div class="welcome-container">
+        <div class="welcome-left">
+          <ion-icon name="person-circle-outline" class="welcome-icon"></ion-icon>
+          <div class="welcome-text">
+            <p><strong>Selamat Datang <br>Nama Pengguna</strong></p>
+          </div>
+        </div>
+        <div class="notif-container" (click)="gotoNotifikasi()">
+          <ion-icon name="notifications-outline" class="icon-notif"></ion-icon>
+          <ion-badge *ngIf="unreadCount > 0" color="danger">{{ unreadCount }}</ion-badge>
+        </div>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-card class="card-saldo">
+      <img src="assets/icon/fuck.png" class="bg-saldo-card">
+      <ion-card-header>
+        <div class="card-header-container">
+          <div class="title-conatainer">
+            <ion-card-title><strong>KOPIRA</strong></ion-card-title>
+            <ion-card-subtitle>Koperasi Rakyat</ion-card-subtitle>
+          </div>                
+          <ion-button fill="clear" class="history-button" (click)="gotoRiwayat()">
+            Riwayat <ion-icon name="chevron-forward" ></ion-icon>
+          </ion-button>
+        </div>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p><strong>Saldo Simpanan Sukarela</strong></p>
+        <div class="saldo-container">
+          <div class="saldo-display">
+            <span *ngIf="showSaldo" class="saldo-amount">Rp 15.550.000</span>
+            <span *ngIf="!showSaldo" class="saldo-hidden">••••••••</span>
+          </div>
+          <ion-button 
+            fill="clear" 
+            (click)="toggleSaldo()" 
+            class="toggle-button">
+            <ion-icon [name]="showSaldo ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="card-limit">
+      <ion-icon name="cash-outline"></ion-icon>
+      <ion-label><p>Limit Pinjaman</p><h1>Rp10.000.000</h1></ion-label>
+    </ion-card>
+
+    <ion-card class="card-pinjaman-terpakai">
+      <img src="assets/icon/duit.png" class="duit-logo">
+      <ion-label><p>Pinjaman Terpakai</p><h1>Rp5.000.000</h1></ion-label>
+    </ion-card>
+
+    <div class="card-container">
+      <ion-card class="pinjaman-aktif">
+        <ion-card-header>
+          <ion-card-title>Pinjaman Aktif</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>5</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-button class="button-bayar" (click)="gotoBayarTagihan()">Bayar Tagihan</ion-button>
+    </div>
+
+    <ion-card class="riwayat-transaksi">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-button fill="clear" (click)="gotoRiwayat()">
+            Riwayat Transaksi
+            <ion-icon slot="end" name="chevron-forward"></ion-icon>
+          </ion-button>
+        </ion-card-title>
+      </ion-card-header>
+
+      <div class="divider"></div>
+      
+      <ion-card-content>
+        <!-- Daftar Transaksi -->
+        <ion-list lines="none">
+          <!-- Item Transaksi 1 -->
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="assets/icon/bg-kantong-plus.png" class="icon-kantong">
+            </ion-avatar>
+            
+            <ion-label>
+              <h3>Setoran Simpanan</h3>
+              <p>25 Mei 2025</p>
+            </ion-label>
+            
+            <ion-note slot="end" color="success">
+              +Rp 100.000
+            </ion-note>
+          </ion-item>
+
+          <!-- Item Transaksi 2 -->
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="assets/icon/bg-kantong-minus.png" class="icon-kantong">
+            </ion-avatar>
+            
+            <ion-label>
+              <h3>Pembayaran Angsuran</h3>
+              <p>30 Mei 2025</p>
+            </ion-label>
+            
+            <ion-note slot="end" color="danger">
+              -Rp 50.000
+            </ion-note>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

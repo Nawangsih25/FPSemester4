@@ -1,0 +1,99 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/anggota/beranda" icon="chevron-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Riwayat Transaksi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="sortir-transaksi">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <ion-item class="sortir-item">
+              <ion-select aria-label="Periode" placeholder="Periode Transaksi" interface="popover" class="sortir-select">
+                <ion-select-option value="3">3 Bulan Terakhir</ion-select-option>
+                <ion-select-option value="6">6 Bulan Terakhir</ion-select-option>
+                <ion-select-option value="1">1 Tahun Terakhir</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item class="sortir-item">
+              <ion-select aria-label="Kategori" placeholder="Jenis Transaksi" interface="popover" class="sortir-select">
+                <ion-select-option value="Semua Transaksi">Semua Transaksi</ion-select-option>
+                <ion-select-option value="Simpanan">Simpanan</ion-select-option>
+                <ion-select-option value="Pinjaman">Pinjaman</ion-select-option>
+                <ion-select-option value="BayarTagihan">Bayar Tagihan</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Riwayat Transaksi</ion-card-title>
+      </ion-card-header>
+      <div class="divider"></div>
+      
+      <ion-card-content>
+        <!-- Daftar Transaksi -->
+        <ion-list lines="none">
+          <!-- Item Transaksi 1 -->
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="assets/icon/bg-kantong-plus.png" class="icon-kantong">
+            </ion-avatar>
+            
+            <ion-label>
+              <h3>Penarikan Simpanan</h3>
+              <p>25 Mei 2025</p>
+            </ion-label>
+            
+            <ion-note slot="end" color="success">
+              +Rp 100.000
+            </ion-note>
+          </ion-item>
+
+          <!-- Item Transaksi 2 -->
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="assets/icon/bg-kantong-minus.png" class="icon-kantong">
+            </ion-avatar>
+            
+            <ion-label>
+              <h3>Pembayaran Angsuran</h3>
+              <p>30 Mei 2025</p>
+            </ion-label>
+            
+            <ion-note slot="end" color="danger">
+              -Rp 50.000
+            </ion-note>
+          </ion-item>
+
+          <!-- Item Transaksi 3 -->
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="assets/icon/bg-kantong-plus.png" class="icon-kantong">
+            </ion-avatar>
+            
+            <ion-label>
+              <h3>Setoran Simpanan</h3>
+              <p>25 Mei 2025</p>
+            </ion-label>
+            
+            <ion-note slot="end" color="success">
+              +Rp 100.000
+            </ion-note>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</ion-content>

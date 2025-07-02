@@ -1,0 +1,159 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/anggota/beranda" icon="chevron-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Simpanan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <!-- Card Informasi Rekening -->
+    <ion-card class="info-card">
+      <ion-card-header>
+        <ion-card-title>No Rekening</ion-card-title>
+        <ion-card-subtitle>250520005</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="saldo-item">
+          <span>Saldo Wajib</span>
+          <span class="saldo-amount">Rp5.000.000</span>
+        </div>
+        
+        <div class="saldo-item">
+          <span>Saldo Sukarela</span>
+          <span class="saldo-amount">Rp50.000</span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!--segment-->
+    <ion-segment [(ngModel)]="segment" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="wajib">
+          <ion-label>Wajib</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="sukarela">
+          <ion-label>Sukarela</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+  
+    <!--isi segment wajib-->
+    <div *ngIf="segment === 'wajib'">
+      <ion-card class="card-inputSimpanan">
+        <ion-card-content>
+          <!-- Input Nominal -->
+          <div class="input-section">
+            <ion-input 
+              fill="outline"
+              type="number" 
+              [(ngModel)]="nominalSimpan" 
+              placeholder="Rp0" 
+              (ionChange)="formatAmount()"
+            ></ion-input>
+            <p class="minimum-info">Nominal minimum penarikan Rp10.000</p>
+          </div>
+    
+          <!-- Daftar Nominal Cepat -->
+          <div class="quick-amounts">
+            <ion-button 
+              *ngFor="let amount of nominalCepat" 
+              expand="block" 
+              fill="outline" 
+              class="quick-amount-button"
+              (click)="pilihSimpan(amount)"
+            >
+              {{ amount | currency:'Rp':'symbol':'1.0-0' }}
+            </ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Pilihan Bank -->
+      <ion-card class="bank-section">
+        <ion-list>
+          <ion-item>
+            <ion-select interface="action-sheet" label="Pilih Metode Pembayaran" label-placement="floating" fill="outline">
+              <ion-select-option value="bni">BNI</ion-select-option>
+              <ion-select-option value="bjb">BJB</ion-select-option>
+              <ion-select-option value="mandiri">Mandiri</ion-select-option>
+              <ion-select-option value="dana">Dana</ion-select-option>
+              <ion-select-option value="gopay">Gopay</ion-select-option>
+              <ion-select-option value="ovo">Ovo</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+
+      <ion-card class="catatan">
+        <p>Catatan</p>
+        <ul>
+          <li>Setoran Simpanan Wajib disetor setiap bulan</li>
+          <li>Setoran Simpanan Wajib bisa di cicil perhari nya sampai batas waktu maksimal yang sudah di tentukan</li>
+          <li>Setoran Simpanan Wajib Maksimal pada tanggal 25 di setiap bulan nya</li>
+        </ul>
+      </ion-card>
+    </div>
+  
+    <!-- Segment Sukarela -->
+    <div *ngIf="segment === 'sukarela'">
+      <ion-card class="card-inputSimpanan">
+        <ion-card-content>
+          <!-- Input Nominal -->
+          <div class="input-section">
+            <ion-input 
+              fill="outline"
+              type="number" 
+              [(ngModel)]="nominalSimpan" 
+              placeholder="Rp0" 
+              (ionChange)="formatAmount()"
+            ></ion-input>
+            <p class="minimum-info">Nominal minimum penarikan Rp10.000</p>
+          </div>
+    
+          <!-- Daftar Nominal Cepat -->
+          <div class="quick-amounts">
+            <ion-button 
+              *ngFor="let amount of nominalCepat" 
+              expand="block" 
+              fill="outline" 
+              class="quick-amount-button"
+              (click)="pilihSimpan(amount)"
+            >
+              {{ amount | currency:'Rp':'symbol':'1.0-0' }}
+            </ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Pilihan Bank -->
+      <ion-card class="bank-section">
+        <ion-list>
+          <ion-item>
+            <ion-select interface="action-sheet" label="Pilih Metode Pembayaran" label-placement="floating" fill="outline" [(ngModel)]="selectedMetodePembayaran">
+              <ion-select-option value="bni">BNI</ion-select-option>
+              <ion-select-option value="bjb">BJB</ion-select-option>
+              <ion-select-option value="mandiri">Mandiri</ion-select-option>
+              <ion-select-option value="dana">Dana</ion-select-option>
+              <ion-select-option value="gopay">Gopay</ion-select-option>
+              <ion-select-option value="ovo">Ovo</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+
+      <ion-card class="catatan">
+        <p>Catatan</p>
+        <ul>
+          <li>Setoran Simpanan Sukarela ....</li>
+          <li>Setoran Simpanan Sukarela ....</li>
+          <li>Setoran Simpanan Sukarela ....</li>
+        </ul>
+      </ion-card>
+    </div>
+
+    <ion-button (click)="lanjutKonfirmasi()" expand="full" class="button-lanjut">Lanjut</ion-button>
+  </div>
+
+</ion-content>

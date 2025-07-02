@@ -1,0 +1,139 @@
+ion-header {
+    background: #56D4AA;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+
+    ion-toolbar {
+        --background: transparent;
+    }
+
+    ion-buttons {
+        color: #000000;
+        padding-left: 20px;
+    }
+
+    ion-title {
+        color: #000000;
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+
+.container {
+    padding: 10px;
+}
+
+.metode-pembayaran {
+    background: #F9F9F9;
+    border-radius: 8px;
+
+    ion-card-title {
+        color: #000000;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    ion-list{
+        background: transparent;
+    }
+
+    ion-item {
+        --background: transparent;
+        --color: #000000;
+
+        ion-select{
+            background: #FFFFFF; 
+            font-size: 15px;
+            border-radius: 8px;
+        }
+    }
+}
+
+.tagihanmu {
+    background: #F9F9F9;
+    border-radius: 8px;
+    margin-top: 20px;
+
+    ion-card-title {
+        color: #000000;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    ion-card-content {
+        p {
+            color: #000000;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        .list-tagihan {
+            text-align: center;
+
+            .rincian-tagihan {
+                background: #EED4D4;
+                border-radius: 8px;
+                
+                ion-card-header {
+                    border-top-left-radius: 8px;
+                    border-top-right-radius: 8px;
+                    margin: 8px 8px 0 8px;
+                    background: #FFFFFF;
+                    height: 26px;
+                    padding-top: 5px;
+
+                    ion-card-title {
+                        height: 21px;
+                    }
+                }
+
+                ion-card-content {
+                    .label {
+                        color: #000000;
+                    }
+
+                    .nilai {
+                        color: #000000;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.bottom-button-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    height: 93px;
+    background: #F9F9F9;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    z-index: 10;
+}
+
+.payment-info {
+    display: flex;
+    justify-content: space-between;
+    
+    span {
+        font-size: 14px;
+        font-weight: bold;
+        color: #000000;
+    }
+}
+
+.action-button {
+    --background: #56D4AA;
+    --border-radius: 8px;
+    height: 42px;
+    
+    
+    .action-text {
+        font-size: 14px;
+        font-weight: bold;
+        color: #FCFCFC;
+    }
+}

@@ -1,0 +1,158 @@
+ion-header {
+    background: #56D4AA;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding-left: 20px;
+
+    ion-toolbar {
+        --background: transparent;
+
+        ion-title {
+            color: #000000;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+}
+
+//css content
+#container {
+  padding: 10px;
+}
+
+.info-card {
+  border-radius: 15px;
+  background: #F9F9F9;
+
+  ion-card-header {
+    text-align: center;
+
+    ion-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #000000;
+    }
+
+    ion-card-subtitle {
+      font-size: 14px;
+      font-weight: 700;
+      color: #000000;
+      margin-top: 0;
+    }
+  }
+
+  ion-card-content {
+
+    .saldo-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 500;
+      color: #000000;
+      padding-bottom: 8px;
+
+      .saldo-amount {
+        font-weight: bold;
+        color: #000;
+      }
+    }
+  }
+}
+
+//scss segment
+ion-segment {
+    --background: #ffffff;
+    border-radius: 40px;
+    border-style: solid;
+    border-color: #56D4AA;
+    margin: 0 auto;
+    width: 252px;
+    height: 53px;
+}
+
+ion-segment-button {
+    --background: #FFFFFF;
+    --color: #56D4AA;
+    --color-checked: #ffffff;
+    --background-checked: #56D4AA;
+    --border-radius: 40px;
+    --indicator-height: 0;
+    font-weight: bold;
+}
+
+//simpanan wajib
+.card-inputSimpanan {
+    background: #F9F9F9;
+
+    .input-section {
+      margin-bottom: 24px;
+    
+        ion-input {
+            --border-radius: 3px;
+            --padding: 16px;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: left;
+        }
+    
+        .minimum-info {
+            color: #FF8D8D;
+            font-size: 10px;
+            margin: 10px 0 0 5px;
+        }
+    }
+    
+    .quick-amounts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    
+      .quick-amount-button {
+        --border-width: 1px;
+        --border-color: #56D4AA;
+        --color: #000000;
+        --border-radius: 3px;
+        height: 48px;
+        font-weight: 500;
+      }
+    }
+}
+
+
+.bank-section {
+    --background:#F9F9F9;
+    border-radius: 8px;
+
+    ion-item {
+        --background:#F9F9F9;
+        color: #000000;
+
+        ion-select{
+            background:#F9F9F9;
+            font-size: 15px;
+        }
+    }
+}
+
+.catatan {
+    background:#F9F9F9;
+    padding: 15px;
+
+    p {
+        color: #000000;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    ul {
+        color: #000000;
+        font-size: 12px;
+        font-weight: 500;
+    }
+}
+
+.button-lanjut {
+  --background: #56D4AA;
+  --border-radius: 8px;
+}

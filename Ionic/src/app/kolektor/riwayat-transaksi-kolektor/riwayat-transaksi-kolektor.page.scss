@@ -1,0 +1,122 @@
+ion-header {
+    background: #56D4AA;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding-left: 20px;
+
+    ion-toolbar {
+        --background: transparent;
+
+        ion-title {
+            color: #000000;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+}
+
+.container {
+    padding: 10px;
+}
+
+.sortir-transaksi {
+    :host {
+        .sortir-item {
+            --inner-border-width: 0;  // Menghilangkan underline
+            --background: #F9F9F9;    // Warna background item
+            border-radius: 8px;       // Border radius
+            margin-bottom: 8px;       // Spacing bawah
+        }
+
+        .sortir-select {
+            --background: #F9F9F9;    // Warna background select
+            --padding-start: 12px;    // Padding kiri
+            --padding-end: 12px;      // Padding kanan
+            width: 100%;             // Lebar penuh
+        }
+
+        ion-select::part(icon) {
+            color: #000000;             // Warna icon dropdown
+        }
+
+        ion-select::part(placeholder),
+        ion-select::part(text) {
+            color: #000000;             // Warna text
+        }
+    }
+}
+
+ion-card {
+    margin: 16px;
+    border-radius: 20px;
+    background: #F9F9F9;
+
+    ion-card-header {
+        height: 27px;
+        padding-top: 4px;
+        
+        ion-card-title {
+            height: 21px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #000000;
+        }
+    }
+
+    .divider {
+        height: 1px;
+        background-color: #A4A4A4;
+    }
+
+    ion-list {
+        background: #F9F9F9;
+        padding-top: 0;
+    }
+    
+    ion-item {
+        --padding-start: 8px;
+        --inner-padding-end: 8px;
+        --min-height: 72px;
+        margin-bottom: 8px;
+        border-radius: 8px;
+        --background: #f9f9f9;
+
+        ion-avatar {
+            margin-top: -8px;
+            text-align: center;
+        }
+
+        ion-label {
+            h3 {
+                font-size: 14px;
+                font-weight: bold;
+                margin-bottom: 4px;
+                color: #000000;
+            }
+
+            h6 {
+                font-size: 10px;
+                font-weight: 500;
+                color: #000000;
+                margin-bottom: 0;
+            }
+            
+            p {
+                color: #A4A4A4;
+                font-size: 8px;
+                font-weight: 500;
+                margin-top: 0;
+            }
+        }
+
+        ion-note {
+            ion-button {
+                font-size: 12px;
+                font-weight: 500;
+                text-decoration: none;
+                color: #56D4AA;
+                text-transform: none;
+            }
+        }
+    }
+}

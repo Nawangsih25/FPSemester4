@@ -1,0 +1,266 @@
+ion-header {
+    background: #56D4AA;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding-left: 20px;
+
+    ion-toolbar {
+        --background: transparent;
+
+        ion-title {
+            color: #000000;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+}
+
+.container {
+    padding: 10px;
+    text-align: center;
+}
+
+.total-pinjaman {
+    background: #F9F9F9;
+
+    ion-card-title {
+        color: #000000;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    ion-card-content{
+        p {
+            font-size: 25px;
+            font-weight: 600;
+            color: #000000;
+        }
+
+        ion-range {
+            --bar-height: 15px;
+            --knob-size: 40px;
+            
+            &::part(bar) {
+                height: 15px;
+                border-radius: 10px;
+            }
+            
+            &::part(bar-active) {
+                background: var(--ion-color-success);
+                border-radius: 10px;
+            }
+        }
+
+        .minmax-label {
+            display: flex;
+            justify-content: space-between;
+            margin-top: -8px; /* Membuat label lebih dekat ke range */
+            
+            ion-label {
+                font-size: 10px;
+                font-weight: 500;
+                color: #000000;
+            }
+        }
+    }
+}
+
+.tenor {
+    background: #F9F9F9;
+    margin-top: 20px;
+
+    ion-card-title {
+        font-size: 14px;
+        font-weight: bold;
+        color: #000000;
+        text-align: left;
+    }
+
+    p {
+        font-size: 10px;
+        font-weight: 400;
+        color: #000000;
+        text-align: left;
+    }
+
+    .pilih-tenor {
+        display: flex;
+        justify-content: center;
+        gap: 10%;
+
+        .button-tenor {
+            --border-radius: 6px;
+            --background: transparent;
+            --padding-top: 20px;
+            --padding-bottom: 20px;
+            height: auto;
+            border: 1px solid #56D4AA;
+            background: transparent;
+            
+            .bg-button {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0.25;
+                z-index: 0;
+            }
+
+            .isi-button {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .nominal {
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: #000000;
+                }
+
+                .kali-bayar {
+                    font-size: 10px;
+                    font-weight: 400;
+                    color: #000000;
+                }
+            }
+
+            &.selected {
+                --background: #56D4AA;
+                border: none;
+                
+                .isi-button {
+                    .nominal, .kali-bayar {
+                    color: #FCFCFC;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.bank-section {
+    background:#F9F9F9;
+    border-radius: 8px;
+    margin-top: 20px;
+
+    ion-list{
+        background: transparent;
+    }
+
+    ion-item {
+        --background: transparent;
+        --color: #000000;
+
+        ion-select{
+            background: #FCFCFC; 
+            font-size: 15px;
+            border-radius: 8px;
+        }
+    }
+}
+
+.detail-pinjaman {
+    background: #F9F9F9;
+    border-radius: 8px;
+    margin-top: 20px;
+
+    ion-card-header {
+        padding-bottom: 8px;
+
+        ion-card-title {
+            text-align: left;
+            font-size: 14px;
+            font-weight: bold;
+            color: #000000;
+        }
+    }
+
+    ion-card-content {
+        padding: 0 16px 16px;
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            font-size: 12px;
+            font-weight: 400;
+
+            .label {
+                color: #000000;
+            }
+
+            .value {
+                color: #000000;
+                font-weight: 500;
+            }
+
+            &.dana-terima {
+                .label {
+                    font-weight: bold;
+                } 
+                .value {
+                    font-weight: bold;
+                    color: #56D4AA;
+                }
+            }
+
+            &.highlight {
+                .label {
+                    font-weight: bold;
+                }
+                .value {
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .divider {
+            height: 1px;
+            background: #A4A4A4;
+            margin: 1px 0;
+        }
+    }
+}
+
+/* For Ionic 7+ */
+.bottom-button-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    height: 93px;
+    background: var(--ion-background-color, #ffffff);
+    z-index: 10;
+}
+
+.payment-info {
+    display: flex;
+    justify-content: space-between;
+    
+    .amount {
+        font-size: 14px;
+        font-weight: bold;
+        color: #000000;
+    }
+}
+
+.action-button {
+    --background: #56D4AA;
+    --border-radius: 8px;
+    height: 42px;
+    
+    
+    .action-text {
+        font-size: 14px;
+        font-weight: bold;
+        color: #FCFCFC;
+    }
+}
+
+.action-button:disabled {
+  --background: #cccccc;
+  opacity: 0.7;
+}

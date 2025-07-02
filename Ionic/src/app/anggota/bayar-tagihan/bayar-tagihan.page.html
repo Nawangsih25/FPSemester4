@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/anggota/beranda" icon="chevron-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Bayar Tagihan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-card class="metode-pembayaran">
+      <ion-card-header>
+        <ion-card-title>Metode Pembayaran</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-select interface="action-sheet" label="Pilih Metode Pembayaran" label-placement="floating" fill="outline">
+              <ion-select-option value="bni">BNI</ion-select-option>
+              <ion-select-option value="bri">BRI</ion-select-option>
+              <ion-select-option value="mandiri">Mandiri</ion-select-option>
+              <ion-select-option value="dana">Dana</ion-select-option>
+              <ion-select-option value="gopay">Gopay</ion-select-option>
+              <ion-select-option value="ovo">Ovo</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="tagihanmu">
+      <ion-card-header>
+        <ion-card-title>Tagihanmu</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>Lihat pembayaran mendatang:</p>
+        <div class="list-tagihan">
+          <ion-checkbox
+            *ngFor="let bill of bills; let i = index"
+            labelPlacement="end" 
+            justify="space-between" 
+            [checked]="bill.checked"
+            (ionChange)="onCheckboxChange($event, i)"
+            class="bill-checkbox">
+
+            <ion-card class="rincian-tagihan">
+              <ion-card-header>
+                <ion-card-title>{{ bill.amount }}</ion-card-title>
+              </ion-card-header>
+
+              <ion-card-content>
+                <ion-grid>
+                  <ion-row class="label">
+                    <ion-col>Tenor</ion-col>
+                    <ion-col>Tagihan</ion-col>
+                    <ion-col>Jatuh Tempo</ion-col>
+                  </ion-row>
+                  <ion-row class="isi-label">
+                    <ion-col>{{ bill.details.tenor }}</ion-col>
+                    <ion-col>{{ bill.details.tagihan }}</ion-col>
+                    <ion-col>{{ bill.details.jatuhTempo }}</ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-card-content>
+            </ion-card>
+          </ion-checkbox>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="bottom-button-container">
+      <div class="payment-info">
+        <span slot="start">Jumlah Total</span>
+        <span slot="end" class="total-bayar">{{ totalPayment }}</span>
+      </div>
+      <ion-button expand="block" class="action-button" (click)="processPayment()">
+        Bayar Angsuran
+      </ion-button>
+    </div>
+
+  </div>
+</ion-content>

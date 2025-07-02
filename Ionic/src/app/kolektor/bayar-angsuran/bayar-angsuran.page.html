@@ -1,0 +1,87 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/kolektor/beranda-kolektor" icon="chevron-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Pembayaran Angsuran</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-card class="nominal-pembayaran">
+      <ion-card-header>
+        <ion-icon name="person-circle" slot="start" class="avatar-icon"></ion-icon>
+        <ion-card-title>Abdul Hafidz</ion-card-title>
+        <ion-card-subtitle>0811 3547 9712</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <!-- Input Nominal -->
+        <div class="input-section">
+          <ion-input fill="outline" type="number" [(ngModel)]="nominalBayar" placeholder="Rp0"
+            (ionChange)="formatAmount()"></ion-input>
+          <p class="minimum-info">Nominal minimum Rp10.000</p>
+        </div>
+
+        <!-- Daftar Nominal Cepat -->
+        <div class="quick-amounts">
+          <ion-button *ngFor="let amount of nominalCepat" expand="block" fill="outline" class="quick-amount-button"
+            (click)="pilihBayar(amount)">
+            {{ amount | currency:'Rp':'symbol':'1.0-0' }}
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="metode-pembayaran">
+      <ion-card-header>
+        <ion-card-title>Metode Pembayaran</ion-card-title>
+        <ion-segment>
+          <ion-segment-button fill="outline" value="cash" content-id="cash">
+            <ion-label>Cash</ion-label>
+          </ion-segment-button>
+          <ion-segment-button fill="outline" value="qris" content-id="qris">
+            <ion-label>QRIS</ion-label>
+          </ion-segment-button>
+          <ion-segment-button fill="outline" value="transfer" content-id="transfer">
+            <ion-label>Transfer</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-segment-view>
+          <ion-segment-content id="cash">
+            <p>Catatan</p>
+            <ion-input label="Catatan" fill="outline"></ion-input>
+          </ion-segment-content>
+          <ion-segment-content id="qris">
+          </ion-segment-content>
+          <ion-segment-content id="transfer">
+            <ion-list>
+              <ion-item>
+                <ion-select interface="action-sheet" label="Pilih Metode Pembayaran" label-placement="floating"
+                  fill="outline">
+                  <ion-select-option value="bni">BNI</ion-select-option>
+                  <ion-select-option value="bri">BRI</ion-select-option>
+                  <ion-select-option value="mandiri">Mandiri</ion-select-option>
+                  <ion-select-option value="dana">Dana</ion-select-option>
+                  <ion-select-option value="gopay">Gopay</ion-select-option>
+                  <ion-select-option value="ovo">Ovo</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-segment-content>
+        </ion-segment-view>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="bottom-button-container">
+      <ion-button expand="block" class="action-button" (click)="lanjutKonfirmasi()">
+        Lanjut
+      </ion-button>
+    </div>
+
+  </div>
+</ion-content>

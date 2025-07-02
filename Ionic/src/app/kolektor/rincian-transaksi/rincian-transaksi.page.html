@@ -1,0 +1,114 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/riwayat-transaksi-kolektor" icon="chevron-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Rincian Transaksi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-list>
+      <ion-item class="angsuran">
+        <ion-card class="card-angsuran">
+          <ion-card-header>
+            <ion-card-title>Angsuran Ke-3</ion-card-title>
+            <ion-card-subtitle>28 Juni 2025, 10:00</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            <p>Nama      : Abdul Hafidz</p>
+            <p>Jumlah    : Rp60.000</p>
+            <p>Pembayaran: Transfer</p>
+
+            <ion-button (click)="openReceiptModal()" expand="block" class="receipt-button">
+              <ion-icon slot="start" name="camera"></ion-icon>
+              <p>Lihat Bukti Pembayaran</p>
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+
+    <ion-modal [isOpen]="isModalOpen" class="receipt-modal">
+      <ng-template>
+        <ion-header class="detail-rincian">
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button (click)="closeModal()">
+                <ion-icon name="close-outline"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+            <ion-title>Rincian Pembayaran</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        
+        <ion-content>
+          <div class="receipt-container">
+            <!-- Bagian Pembayaran Diterima -->
+            <div class="terima-pembayaran">
+              <img src="assets/icon/sukses.png" alt="Sukses" class="icon-sukses">
+              <p>Pembayaran Diterima</p>
+              <div class="besar-nominal">Rp60.000</div>
+            </div>
+          
+            <!-- Detail Transaksi -->
+            <ion-card class="detail-card">
+              <ion-card-content>
+                <h2>Detail Pembayaran Angsuran</h2>
+                
+                <div class="detail-item">
+                  <span>No. Transaksi</span>
+                  <span class="value">TRX-20250628-001</span>
+                </div>
+                
+                <div class="detail-item">
+                  <span>Waktu Transaksi</span>
+                  <span class="value">28 Juni 2025, 10:00</span>
+                </div>
+              
+                <div class="divider"></div>
+              
+                <!-- Rincian Pembayaran -->
+                <div class="rincian-pembayaran">
+                  <div class="detail-item">
+                    <span>Dana yang dibayarkan</span>
+                    <span class="value">Rp60.000</span>
+                  </div>
+                  
+                  <div class="detail-item">
+                    <span>Subtotal</span>
+                    <span class="value">Rp60.000</span>
+                  </div>
+                </div>
+              
+                <div class="divider"></div>
+              
+                <!-- Total sisa yang Harus Dibayar -->
+                <div class="sisa-bayar">
+                  <div class="detail-item highlight">
+                    <span>Dana sisa yang harus dibayar</span>
+                    <span class="value">Rp0</span>
+                  </div>
+                </div>
+              
+                <div class="divider"></div>
+              
+                <!-- Metode Pembayaran -->
+                <div class="metode-pembayaran">
+                  <div class="detail-item">
+                    <span>Pembayaran Melalui</span>
+                    <span class="value">Transfer Bank</span>
+                  </div>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+  </div>
+</ion-content>

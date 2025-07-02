@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/anggota/beranda" icon="chevron-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Notifikasi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <!-- List Notifikasi -->
+    <ion-list>
+      <ion-card *ngFor="let notif of notifications" [class.unread]="!notif.read">
+        <ion-card-header>
+          <ion-card-title>{{notif.title}}</ion-card-title>
+          <ion-card-subtitle>{{notif.date | date:'dd MMM yyyy, HH:mm'}}</ion-card-subtitle>
+        </ion-card-header>
+        
+        <ion-card-content>
+          <p>{{notif.message}}</p>
+          <ion-button 
+            *ngIf="!notif.read" 
+            fill="clear" 
+            size="small"
+            (click)="markAsRead(notif.id)">
+            Tandai sudah dibaca
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+</ion-content>

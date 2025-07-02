@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/bayar-angsuran" icon="chevron-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Konfirmasi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-card class="card-konfirmasi">
+      <ion-card-header>
+        <ion-card-title class="title-simpanan">
+          Detail Pembayaran 
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="detail-item">
+          <span>Dana yang dibayarkan</span>
+          <span class="nominal">{{ formattedNominal }}</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="subtotal">
+          <div class="detail-item">
+            <span>Subtotal</span>
+            <span class="nominal">{{ formattedNominal }}</span>
+          </div>
+          <div class="detail-item">
+            <span>Dana yang harus dibayar</span>
+            <span class="nominal">Rp30.000</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="metode-pembayaran">
+          <div class="detail-item">
+            <span>Pembayaran Melalui</span>
+            <span class="metode">{{ metodePembayaran }}</span>
+          </div>
+          <div class="detail-item">
+            <span>Kode Pembayaran</span>
+            <span class="kode-pembayaran">{{ paymentCode }}</span>
+          </div>
+        </div>
+
+        <div class="catatan-bayar">
+          <p>Kode Pembayaran berlaku selama 24 jam</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="note">
+      <p>Jika sudah selesai silakan klik konfirmasi</p>
+    </div>
+
+    <div class="confirm-button-container">
+      <ion-button expand="block" class="confirm-button" (click)="confirmPayment()" routerDirection="forward">
+        Konfirmasi Pembayaran
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
