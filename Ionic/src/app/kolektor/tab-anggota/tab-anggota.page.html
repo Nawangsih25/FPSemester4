@@ -10,94 +10,30 @@
 <ion-content [fullscreen]="true">
   <div class="container">
     <ion-list>
-      <ion-card [button]="true" class="card-anggota">
+      <ion-card *ngFor="let anggota of anggotaList" class="card-anggota" (click)="gotoBayarAngsuran(anggota)">
         <ion-card-header>
           <ion-icon name="person-circle" slot="start" class="avatar-icon"></ion-icon>
-          <ion-card-title>
-            Abdul Hafidz
-          </ion-card-title>
-          <ion-card-subtitle>
-            0811 3547 9712
-          </ion-card-subtitle>
+          <ion-card-title>{{ anggota.nama }}</ion-card-title>
+          <ion-card-subtitle>{{ anggota.rekening }}</ion-card-subtitle>
         </ion-card-header>
 
         <ion-card-content>
           <div class="hutang">
-            <span class="text">Hutang</span>
-            <span class="nominal">Rp200.000</span>
+            <span class="text">Angsuran Hari ini</span>
+            <span class="nominal">{{ anggota.tagihan_hari_ini | currency:'Rp':'symbol':'1.0-0' }}</span>
           </div>
           <div class="status">
-            <span class="text">Status</span>
-            <span class="nominal lunas">Lunas</span>
-          </div>
-        </ion-card-content>
-      </ion-card>
-
-      <ion-card [button]="true" class="card-anggota">
-        <ion-card-header>
-          <ion-icon name="person-circle" slot="start" class="avatar-icon"></ion-icon>
-          <ion-card-title>
-            Abdul Nelsen
-          </ion-card-title>
-          <ion-card-subtitle>
-            0832 3657 9853
-          </ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-          <div class="hutang">
-            <span class="text">Hutang</span>
-            <span class="nominal">Rp2.000.000</span>
-          </div>
-          <div class="status">
-            <span class="text">Status</span>
-            <span class="nominal belum-bayar">Belum Bayar</span>
-          </div>
-        </ion-card-content>
-      </ion-card>
-
-      <ion-card [button]="true" class="card-anggota">
-        <ion-card-header>
-          <ion-icon name="person-circle" slot="start" class="avatar-icon"></ion-icon>
-          <ion-card-title>
-            Fajar Aja
-          </ion-card-title>
-          <ion-card-subtitle>
-            0812 4556 9123
-          </ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-          <div class="hutang">
-            <span class="text">Hutang</span>
-            <span class="nominal">Rp5.000.000</span>
-          </div>
-          <div class="status">
-            <span class="text">Status</span>
-            <span class="nominal belum-bayar">Belum Bayar</span>
-          </div>
-        </ion-card-content>
-      </ion-card>
-
-      <ion-card [button]="true" class="card-anggota">
-        <ion-card-header>
-          <ion-icon name="person-circle" slot="start" class="avatar-icon"></ion-icon>
-          <ion-card-title>
-            Nanang
-          </ion-card-title>
-          <ion-card-subtitle>
-            0831 6216 5723
-          </ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-          <div class="hutang">
-            <span class="text">Hutang</span>
-            <span class="nominal">Rp4.000.000</span>
-          </div>
-          <div class="status">
-            <span class="text">Status</span>
-            <span class="nominal nunggak">Menunggak</span>
+            <span class="text">Status Pinjaman</span>
+            <span
+              class="nominal"
+              [ngClass]="{
+                'lunas': anggota.status === 'Lunas',
+                'belum-bayar': anggota.status === 'Belum Bayar',
+                'nunggak': anggota.status === 'Menunggak'
+              }"
+            >
+              {{ anggota.status }}
+            </span>
           </div>
         </ion-card-content>
       </ion-card>

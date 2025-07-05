@@ -50,10 +50,16 @@ ion-header {
     font-weight: bold;
     color: #000000;
   }
+
+  .metode {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+  }
   
   .kode-pembayaran {
     font-weight: bold;
-    color: var(--ion-color-primary);
+    color: #000000;
     letter-spacing: 1px;
   }
 }
@@ -73,14 +79,9 @@ ion-header {
   }
 }
 
-.catatan-bayar {
-  margin-top: 16px;
-  p {
-    color: #000000;
-    font-size: 14px;
-    text-align: center;
-    font-style: italic;
-  }
+.image-preview {
+  margin-top: 10px;
+  text-align: center;
 }
 
 .note {

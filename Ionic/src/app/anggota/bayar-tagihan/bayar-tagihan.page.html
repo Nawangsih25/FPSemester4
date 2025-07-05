@@ -17,13 +17,8 @@
       <ion-card-content>
         <ion-list>
           <ion-item>
-            <ion-select interface="action-sheet" label="Pilih Metode Pembayaran" label-placement="floating" fill="outline">
-              <ion-select-option value="bni">BNI</ion-select-option>
-              <ion-select-option value="bri">BRI</ion-select-option>
-              <ion-select-option value="mandiri">Mandiri</ion-select-option>
-              <ion-select-option value="dana">Dana</ion-select-option>
-              <ion-select-option value="gopay">Gopay</ion-select-option>
-              <ion-select-option value="ovo">Ovo</ion-select-option>
+            <ion-select interface="action-sheet" label="Pilih Metode Pembayaran" label-placement="floating" fill="outline" [(ngModel)]="selectedMetodePembayaran">
+              <ion-select-option *ngFor="let metode of metodePembayaranList" [value]="metode.value">{{ metode.label }}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>

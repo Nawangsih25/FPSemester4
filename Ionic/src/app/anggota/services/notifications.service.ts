@@ -38,12 +38,23 @@ export class NotificationsService {
     }
   }
 
-  addNotification(notification: any) {
-    this.notifications.unshift({
-      ...notification,
+  /**
+   * Tambahkan notifikasi baru dari backend atau lokal
+   * @param notification {
+   *   title: string,
+   *   message: string,
+   *   date?: string | Date
+   * }
+   */
+
+  addNotification(notification: { title: string; message: string; date?: string | Date }) {
+    const newNotif = {
       id: Date.now().toString(),
-      date: new Date(),
+      title: notification.title,
+      message: notification.message,
+      date: notification.date ? new Date(notification.date) : new Date(),
       read: false
-    });
+    };
+    this.notifications.unshift(newNotif);
   }
 }

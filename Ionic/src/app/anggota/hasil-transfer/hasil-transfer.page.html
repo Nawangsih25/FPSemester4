@@ -6,66 +6,108 @@
 
 <ion-content [fullscreen]="true">
   <div class="container">
-    <!-- Bagian Pembayaran Diterima -->
-    <div class="terima-pembayaran">
-      <img src="assets/icon/sukses.png" class="icon-sukses">
-      <p>Pembayaran Diterima</p>
-      <div class="besar-nominal">{{ transferData.formattedNominal }}</div>
+    <!-- BAGIAN JIKA DARI S I M P A N A N -->
+    <div *ngIf="transferData.source === 'simpanan'">
+      <div class="terima-pembayaran">
+        <ion-icon name="timer-outline" class="icon-sukses"></ion-icon>
+        <p>Pembayaran Pending</p>
+        <div class="besar-nominal">{{ transferData.formattedNominal }}</div>
+      </div>
+
+      <ion-card>
+        <div class="detail-transaksi">
+          <h2>Detail Simpanan {{ transferData.jenisSimpanan === 'wajib' ? 'Wajib' : 'Sukarela' }}</h2>
+
+          <div class="detail-item">
+            <span>No. Transaksi</span>
+            <span class="value">{{ transferData.paymentCode }}</span>
+          </div>
+
+          <div class="detail-item">
+            <span>Waktu Transaksi</span>
+            <span class="value">{{ transferData.tanggal }}</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="rincian-pembayaran">
+          <div class="detail-item">
+            <span>Dana yang dibayarkan</span>
+            <span class="value">{{ transferData.formattedNominal }}</span>
+          </div>
+
+          <div class="detail-item">
+            <span>Subtotal</span>
+            <span class="value">{{ transferData.formattedNominal }}</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="metode-pembayaran">
+          <div class="detail-item">
+            <span><strong>Pembayaran Melalui</strong></span>
+            <span class="value">{{ transferData.metodePembayaranLabel }}</span>
+          </div>
+        </div>
+      </ion-card>
     </div>
-  
-    <!-- Detail Transaksi -->
-    <ion-card>
-      <div class="detail-transaksi">
-        <h2>Detail Simpanan {{ transferData.jenisSimpanan === 'wajib' ? 'Wajib' : 'Sukarela' }}</h2>
-        
-        <div class="detail-item">
-          <span>No. Transaksi</span>
-          <span class="value">{{ transferData.paymentCode }}</span>
-        </div>
-        
-        <div class="detail-item">
-          <span>Waktu Transaksi</span>
-          <span class="value">{{ transferData.tanggal }}</span>
-        </div>
+
+    <!-- BAGIAN JIKA DARI T A G I H A N -->
+    <div *ngIf="transferData.source === 'tagihan'">
+      <div class="terima-pembayaran">
+        <ion-icon name="checkmark-done-outline" class="icon-sukses"></ion-icon>
+        <p>Pembayaran Tagihan Berhasil</p>
+        <div class="besar-nominal">{{ transferData.totalPaid }}</div>
       </div>
-    
-      <div class="divider"></div>
-    
-      <!-- Rincian Pembayaran -->
-      <div class="rincian-pembayaran">
-        <div class="detail-item">
-          <span>Dana yang dibayarkan</span>
-          <span class="value">{{ transferData.formattedNominal }}</span>
+
+      <ion-card>
+        <div class="detail-transaksi">
+          <h2>Detail Pembayaran Tagihan</h2>
+
+          <div class="detail-item">
+            <span>No. Transaksi</span>
+            <span class="value">{{ transferData.paymentCode }}</span>
+          </div>
+
+          <div class="detail-item">
+            <span>Tanggal Pembayaran</span>
+            <span class="value">{{ transferData.paymentDate }}</span>
+          </div>
+
+          <div class="detail-item">
+            <span>Waktu Pembayaran</span>
+            <span class="value">{{ transferData.paymentTime }}</span>
+          </div>
         </div>
-        
-        <div class="detail-item">
-          <span>Subtotal</span>
-          <span class="value">{{ transferData.formattedNominal }}</span>
+
+        <div class="divider"></div>
+
+        <div class="rincian-pembayaran">
+          <div class="detail-item">
+            <span>Total Tagihan Dibayar</span>
+            <span class="value">{{ transferData.totalPaid }}</span>
+          </div>
+
+          <div class="detail-item">
+            <span>Tagihan Belum Dibayar</span>
+            <span class="value">{{ transferData.unpaidBills }}</span>
+          </div>
         </div>
-      </div>
-    
-      <div class="divider"></div>
-    
-      <!-- Total sisa yang Harus Dibayar -->
-      <div class="sisa-bayar">
-        <div class="detail-item highlight">
-          <span><strong>Dana sisa yang harus dibayar</strong></span>
-          <span class="value">Rp10.000</span>
+
+        <div class="divider"></div>
+
+        <div class="metode-pembayaran">
+          <div class="detail-item">
+            <span><strong>Pembayaran Melalui</strong></span>
+            <span class="value">{{ transferData.paymentMethod }}</span>
+          </div>
         </div>
-      </div>
-    
-      <div class="divider"></div>
-    
-      <!-- Metode Pembayaran -->
-      <div class="metode-pembayaran">
-        <div class="detail-item">
-          <span><strong>Pembayaran Melalui</strong></span>
-          <span class="value">{{ transferData.metodePembayaran }}</span>
-        </div>
-      </div>
-    </ion-card>
-  
-    <!-- Tombol Aksi -->
+      </ion-card>
+    </div>
+
+    <!-- Tombol -->
     <div class="action-buttons">
       <ion-button expand="block" fill="clear" class="bagikan-button">Bagikan</ion-button>
       <ion-button expand="block" class="success-button" (click)="gotoHomePage()">Selesai</ion-button>

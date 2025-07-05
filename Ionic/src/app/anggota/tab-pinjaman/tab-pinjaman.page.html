@@ -44,7 +44,7 @@
             class="button-tenor"
             [class.selected]="tenorDipilih === 0"
             (click)="pilihTenor(0)">
-            <img src="assets/icon/fuck.png" class="bg-button">
+            <img src="assets/icon/tenor-90.png" class="bg-button">
             <div class="isi-button">
               <div class="nominal">{{ formatCurrency(tenorOptions[0].nominal) }}</div>
               <div class="kali-bayar">{{ tenorOptions[0].label }}</div>
@@ -55,7 +55,7 @@
             class="button-tenor"
             [class.selected]="tenorDipilih === 1"
             (click)="pilihTenor(1)">
-            <img src="assets/icon/fuck.png" class="bg-button">
+            <img src="assets/icon/tenor-90.png" class="bg-button">
             <div class="isi-button">
               <div class="nominal">{{ formatCurrency(tenorOptions[1].nominal) }}</div>
               <div class="kali-bayar">{{ tenorOptions[1].label }}</div>
@@ -64,38 +64,6 @@
         </div>
         <p>Bunga 5%</p>
       </ion-card-content>
-    </ion-card>
-
-    <!-- Pilih Tujuan -->
-    <ion-card class="bank-section">
-      <ion-list>
-        <ion-item>
-          <ion-select interface="action-sheet" label="Pilih Tujuan Pinjaman" label-placement="floating" fill="outline" [(ngModel)]="selectedTujuanPinjaman">
-            <ion-select-option value="bni">Beli Rumah</ion-select-option>
-            <ion-select-option value="bjb">Renovasi Rumah</ion-select-option>
-            <ion-select-option value="mandiri">Bangun Usaha</ion-select-option>
-            <ion-select-option value="dana">Beli Sawah</ion-select-option>
-            <ion-select-option value="gopay">Adu Gengsi</ion-select-option>
-            <ion-select-option value="ovo">Butuh Perhatian Kolektor</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
-    </ion-card>
-
-    <!-- Pilihan Bank -->
-    <ion-card class="bank-section">
-      <ion-list>
-        <ion-item>
-          <ion-select interface="action-sheet" label="Pilih Bank Tujuan" label-placement="floating" fill="outline" [(ngModel)]="selectedBankTujuan">
-            <ion-select-option value="BNI">BNI</ion-select-option>
-            <ion-select-option value="BJB">BJB</ion-select-option>
-            <ion-select-option value="Mandiri">Mandiri</ion-select-option>
-            <ion-select-option value="Dana">Dana</ion-select-option>
-            <ion-select-option value="Gopay">Gopay</ion-select-option>
-            <ion-select-option value="Ovo">Ovo</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
     </ion-card>
     
     <!-- Detail Pinjaman -->
@@ -148,7 +116,8 @@
       <div *ngIf="tenorDipilih === null" class="amount">
         Pilih Tenor Terlebih Dahulu
       </div>
-      <ion-button expand="block" class="action-button" (click)="goToHasilPinjaman()" [disabled]="tenorDipilih === null">
+      <ion-button expand="block" class="action-button" (click)="submitPinjaman()" [disabled]="tenorDipilih === null">
+        <!-- (click)="goToHasilPinjaman()" -->
         Ambil Pinjaman
       </ion-button>
     </div>

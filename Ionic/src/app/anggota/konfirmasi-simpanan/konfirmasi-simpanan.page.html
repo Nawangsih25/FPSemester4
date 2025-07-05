@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/anggota/simpanan" icon="chevron-back"></ion-back-button>
+      <ion-back-button defaultHref="/anggota/beranda" icon="chevron-back"></ion-back-button>
     </ion-buttons>
     <ion-title>Konfirmasi</ion-title>
   </ion-toolbar>
@@ -9,10 +9,11 @@
 
 <ion-content [fullscreen]="true">
   <div class="container">
-    <ion-card class="card-konfirmasi">
+    <!-- Jika data berasal dari Simpanan -->
+    <ion-card class="card-konfirmasi" *ngIf="jenisPembayaran">
       <ion-card-header>
         <ion-card-title class="title-simpanan">
-          Detail Simpanan {{ jenisSimpanan === 'wajib' ? 'Wajib' : 'Sukarela' }}
+          Detail Simpanan {{ jenisPembayaran === 'wajib' ? 'Wajib' : 'Sukarela' }}
         </ion-card-title>
       </ion-card-header>
 
@@ -31,7 +32,7 @@
           </div>
           <div class="detail-item">
             <span>Dana yang harus dibayar</span>
-            <span class="nominal">Rp30.000</span>
+            <span class="nominal">{{ formattedNominal }}</span>
           </div>
         </div>
 
@@ -40,16 +41,72 @@
         <div class="metode-pembayaran">
           <div class="detail-item">
             <span>Pembayaran Melalui</span>
-            <span class="metode">{{ metodePembayaran }}</span>
+            <span class="metode">{{ metodePembayaranLabel }}</span>
           </div>
           <div class="detail-item">
-            <span>Kode Pembayaran</span>
-            <span class="kode-pembayaran">{{ paymentCode }}</span>
+            <span>No.Rekening</span>
+            <span class="kode-pembayaran">{{ metodePembayaranRekening }}</span>
           </div>
         </div>
 
-        <div class="catatan-bayar">
-          <p>Kode Pembayaran berlaku selama 24 jam</p>
+        <div class="divider"></div>
+
+        <div class="detail-item">
+          <span>Bukti Pembayaran</span>
+          <input type="file" accept="image/png, image/jpeg, image/jpg" (change)="onFileSelected($event)" />
+        </div>
+
+        <div *ngIf="previewUrl" class="image-preview">
+          <p>Preview:</p>
+          <img [src]="previewUrl" alt="Bukti Pembayaran" style="width: 100%; max-height: 300px; object-fit: contain;" />
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Jika data berasal dari Bayar Tagihan -->
+    <ion-card class="card-konfirmasi" *ngIf="totalPaid">
+      <ion-card-header>
+        <ion-card-title class="title-simpanan">Detail Pembayaran Tagihan</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="detail-item">
+          <span>Total Tagihan Dibayar</span>
+          <span class="nominal">{{ totalPaid }}</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="detail-item">
+          <span>Pembayaran Melalui</span>
+          <span class="metode">{{ metodePembayaranLabel }}</span>
+        </div>
+
+        <div class="detail-item">
+          <span>No. Rekening</span>
+          <span class="kode-pembayaran">{{ metodePembayaranRekening }}</span>
+        </div>
+
+        <div class="detail-item">
+          <span>Tanggal Pembayaran</span>
+          <span class="kode-pembayaran">{{ paymentDate }}</span>
+        </div>
+
+        <div class="detail-item">
+          <span>Waktu Pembayaran</span>
+          <span class="kode-pembayaran">{{ paymentTime }}</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="detail-item">
+          <span>Bukti Pembayaran</span>
+          <input type="file" accept="image/png, image/jpeg, image/jpg" (change)="onFileSelected($event)" />
+        </div>
+
+        <div *ngIf="previewUrl" class="image-preview">
+          <p>Preview:</p>
+          <img [src]="previewUrl" alt="Bukti Pembayaran" style="width: 100%; max-height: 300px; object-fit: contain;" />
         </div>
       </ion-card-content>
     </ion-card>

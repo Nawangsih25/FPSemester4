@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   standalone: false
 })
 export class RiwayatTransaksiKolektorPage implements OnInit {
-  // riwayat: Transaksi[] = [];
+  transaksiList: any[] = [];
 
   constructor(
     private router : Router,
@@ -17,11 +17,9 @@ export class RiwayatTransaksiKolektorPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.transaksiService.riwayat$.subscribe(data => {
-    //   this.riwayat = data;
-    // });
-    // this.transaksiService.muatDariLocalStorage();
-  }
+    const riwayat = JSON.parse(localStorage.getItem('riwayat_transaksi_kolektor') || '[]');
+    this.transaksiList = riwayat;
+  } 
 
   gotoRincian() {
     this.router.navigate(['/rincian-transaksi']);

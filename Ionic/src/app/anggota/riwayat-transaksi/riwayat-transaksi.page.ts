@@ -7,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   standalone: false
 })
 export class RiwayatTransaksiPage implements OnInit {
+  transaksiList: any[] = [];
 
-  constructor() { }
+  constructor(
+  ) {}
 
   ngOnInit() {
+    const data = JSON.parse(localStorage.getItem('riwayat_transaksi_anggota') || '[]');
+    this.transaksiList = data;
   }
 
 }

@@ -19,12 +19,12 @@
       <ion-card-content>
         <div class="saldo-item">
           <span>Saldo Wajib</span>
-          <span class="saldo-amount">Rp5.000.000</span>
+          <span class="saldo-amount">Rp {{ saldoWajib | number:'1.0-0' }}</span>
         </div>
         
         <div class="saldo-item">
           <span>Saldo Sukarela</span>
-          <span class="saldo-amount">Rp50.000</span>
+          <span class="saldo-amount">Rp {{ saldoSukarela | number:'1.0-0' }}</span>
         </div>
       </ion-card-content>
     </ion-card>
@@ -51,21 +51,9 @@
               [(ngModel)]="nominalSimpan" 
               placeholder="Rp0" 
               (ionChange)="formatAmount()"
+              [readonly]="segment === 'wajib'"
             ></ion-input>
-            <p class="minimum-info">Nominal minimum penarikan Rp10.000</p>
-          </div>
-    
-          <!-- Daftar Nominal Cepat -->
-          <div class="quick-amounts">
-            <ion-button 
-              *ngFor="let amount of nominalCepat" 
-              expand="block" 
-              fill="outline" 
-              class="quick-amount-button"
-              (click)="pilihSimpan(amount)"
-            >
-              {{ amount | currency:'Rp':'symbol':'1.0-0' }}
-            </ion-button>
+            <p class="minimum-info">Nominal minimum Rp50.000</p>
           </div>
         </ion-card-content>
       </ion-card>
@@ -74,13 +62,8 @@
       <ion-card class="bank-section">
         <ion-list>
           <ion-item>
-            <ion-select interface="action-sheet" label="Pilih Metode Pembayaran" label-placement="floating" fill="outline">
-              <ion-select-option value="bni">BNI</ion-select-option>
-              <ion-select-option value="bjb">BJB</ion-select-option>
-              <ion-select-option value="mandiri">Mandiri</ion-select-option>
-              <ion-select-option value="dana">Dana</ion-select-option>
-              <ion-select-option value="gopay">Gopay</ion-select-option>
-              <ion-select-option value="ovo">Ovo</ion-select-option>
+            <ion-select interface="action-sheet" label="Pilih Metode Pembayaran" label-placement="floating" fill="outline" [(ngModel)]="selectedMetodePembayaran">
+              <ion-select-option *ngFor="let metode of metodePembayaranList" [value]="metode.value">{{ metode.label }}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
@@ -132,12 +115,7 @@
         <ion-list>
           <ion-item>
             <ion-select interface="action-sheet" label="Pilih Metode Pembayaran" label-placement="floating" fill="outline" [(ngModel)]="selectedMetodePembayaran">
-              <ion-select-option value="bni">BNI</ion-select-option>
-              <ion-select-option value="bjb">BJB</ion-select-option>
-              <ion-select-option value="mandiri">Mandiri</ion-select-option>
-              <ion-select-option value="dana">Dana</ion-select-option>
-              <ion-select-option value="gopay">Gopay</ion-select-option>
-              <ion-select-option value="ovo">Ovo</ion-select-option>
+              <ion-select-option *ngFor="let metode of metodePembayaranList" [value]="metode.value">{{ metode.label }}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>

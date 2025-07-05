@@ -1,18 +1,33 @@
 <ion-content [fullscreen]="true">
-
   <div id="logo">
     <img src="assets/icon/LogoLogin.png" alt="Logo">
   </div>
 
   <div id="container">
-    <ion-input label="Username" label-placement="floating" shape="round" fill="outline" placeholder="Username"></ion-input>
-    
-    <br>
-    
-    <ion-input label="Password" label-placement="floating" shape="round" fill="outline" placeholder="Password"></ion-input>
+    <ion-input
+      label="NIK"
+      label-placement="floating"
+      shape="round"
+      fill="outline"
+      placeholder="Masukkan NIK"
+      [(ngModel)]="nik">
+    </ion-input>
 
     <br>
 
-    <ion-button shape="round"><strong>Login</strong></ion-button>
+    <ion-input
+      label="Nama"
+      label-placement="floating"
+      shape="round"
+      fill="outline"
+      placeholder="Masukkan Nama"
+      [(ngModel)]="nama">
+    </ion-input>
+
+    <br>
+
+    <ion-button shape="round" expand="block" (click)="login()">
+      <strong>Login</strong>
+    </ion-button>
   </div>
 </ion-content>

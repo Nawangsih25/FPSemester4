@@ -37,7 +37,27 @@
           <span>Dana yang diterima</span>
           <span class="value">{{ transferData.danaDiajukan }}</span>
         </div>
+
+        <div class="detail-item">
+          <span>Cicilan Per Hari</span>
+          <span class="value">{{ transferData.biayaPerhari | currency:'Rp ':'symbol':'1.0-0' }}</span>
+        </div>
+
+        <div class="detail-item">
+          <span>Tenor</span>
+          <span class="value">{{ transferData.tenor }}</span>
+        </div>
         
+        <div class="detail-item">
+          <span>Bunga 5%</span>
+          <span class="value">{{ transferData.biayaBunga | currency:'Rp ':'symbol':'1.0-0' }}</span>
+        </div>
+      </div>
+    
+      <div class="divider"></div>
+
+      <!-- Detail Tenor -->
+      <div class="rincian-pembayaran">
         <div class="detail-item">
           <span>Subtotal</span>
           <span class="value">{{ transferData.subtotal }}</span>

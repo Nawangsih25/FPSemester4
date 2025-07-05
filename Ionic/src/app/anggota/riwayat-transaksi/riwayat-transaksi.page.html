@@ -45,52 +45,22 @@
         <!-- Daftar Transaksi -->
         <ion-list lines="none">
           <!-- Item Transaksi 1 -->
-          <ion-item>
+          <ion-item *ngFor="let transaksi of transaksiList">
             <ion-avatar slot="start">
-              <img src="assets/icon/bg-kantong-plus.png" class="icon-kantong">
+              <ion-icon name="person-circle"></ion-icon>
             </ion-avatar>
-            
+
             <ion-label>
-              <h3>Penarikan Simpanan</h3>
-              <p>25 Mei 2025</p>
+              <h3>{{ transaksi.nama }}</h3>
+              <h6>{{ transaksi.source === 'pinjaman' ? 'Pinjaman' : (transaksi.jenis === 'tagihan' ? 'Bayar Tagihan' : 'Simpanan ' + transaksi.jenis) }}</h6>
+              <p>{{ transaksi.tanggal | date:'dd MMM yyyy, HH:mm' }}</p>
             </ion-label>
-            
-            <ion-note slot="end" color="success">
-              +Rp 100.000
+
+            <ion-note slot="end">
+              <span [style.color]="transaksi.status === 'Pending' ? 'orange' : 'green'">{{ transaksi.status }}</span>
             </ion-note>
           </ion-item>
 
-          <!-- Item Transaksi 2 -->
-          <ion-item>
-            <ion-avatar slot="start">
-              <img src="assets/icon/bg-kantong-minus.png" class="icon-kantong">
-            </ion-avatar>
-            
-            <ion-label>
-              <h3>Pembayaran Angsuran</h3>
-              <p>30 Mei 2025</p>
-            </ion-label>
-            
-            <ion-note slot="end" color="danger">
-              -Rp 50.000
-            </ion-note>
-          </ion-item>
-
-          <!-- Item Transaksi 3 -->
-          <ion-item>
-            <ion-avatar slot="start">
-              <img src="assets/icon/bg-kantong-plus.png" class="icon-kantong">
-            </ion-avatar>
-            
-            <ion-label>
-              <h3>Setoran Simpanan</h3>
-              <p>25 Mei 2025</p>
-            </ion-label>
-            
-            <ion-note slot="end" color="success">
-              +Rp 100.000
-            </ion-note>
-          </ion-item>
         </ion-list>
       </ion-card-content>
     </ion-card>
